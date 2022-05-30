@@ -10,10 +10,10 @@ class BeerController extends Controller
 {
     public function index(){
    
-     
+       
 
-         $beer::all();
-
-            return view('home');
+         $beer=Beer::all();
+        return view('home', compact ('beer'));
+         
 }
 }
