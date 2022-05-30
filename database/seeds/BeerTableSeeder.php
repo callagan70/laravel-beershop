@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Beer;
+use Faker\Generator as Faker;
 
 class BeerTableSeeder extends Seeder
 {
@@ -10,9 +11,13 @@ class BeerTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        $beer->nome = 'Peroni';
-        $beer->marca = '';
+        $beer = new Beer();
+        $beer->nome = $faker->words(1, true);
+        $beer->marca = $faker->words(1, true);
+        $beer->price = $faker->randomDigit();
+
+        $beer->save();
     }
 }
